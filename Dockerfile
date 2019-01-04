@@ -11,6 +11,7 @@ RUN ./configure --prefix=/usr/local --with-tdsver=7.3 --with-openssl=/usr/bin &&
 WORKDIR /usr/src/app
 COPY Gemfile* ./
 RUN bundle install
+RUN rails new --database=sqlserver .
 COPY . .
 EXPOSE 3000 1433 80
 CMD rails server -b 0.0.0.0 -P /tmp/puma.pid 
